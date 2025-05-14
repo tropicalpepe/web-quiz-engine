@@ -1,7 +1,7 @@
 package engine.service;
 
 import engine.model.Quiz;
-import engine.model.dto.QuizAnswerResponse;
+import engine.model.request.QuizRequest;
 import engine.repository.QuizRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +12,12 @@ public class QuizService {
         this.quizRepository = quizRepository;
     }
 
-    public Quiz getQuiz(){
-        return quizRepository.getEvent();
-    }
-
-    public QuizAnswerResponse checkAnswer(int answerIndex){
-        QuizAnswerResponse quizAnswerResponse = new QuizAnswerResponse();
-        if (answerIndex == 2) {
-            quizAnswerResponse.setSuccess(true);
-            quizAnswerResponse.setFeedback("Congratulations, you're right!");
-            return quizAnswerResponse;
-        }
-        quizAnswerResponse.setSuccess(false);
-        quizAnswerResponse.setFeedback("Wrong answer! Please, try again.");
-        return quizAnswerResponse;
+    public Quiz createQuiz(QuizRequest quizRequest){
+        Quiz quiz = new Quiz();
+        quiz.setTitle(quizRequest.getTitle());
+        quiz.setText(quizRequest.getText());
+        quiz.setOptions(quizRequest.getOptions());
+        quiz.setAnswer(quizRequest.getAnswer());
+        return quizRepository.save(quiz);
     }
 }

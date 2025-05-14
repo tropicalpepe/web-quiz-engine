@@ -1,30 +1,24 @@
 package engine.controller;
 
 import engine.model.Quiz;
-import engine.model.dto.QuizAnswerResponse;
+import engine.model.request.QuizRequest;
 import engine.service.QuizService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/quiz")
+@RequestMapping("/api")
 public class QuizController {
     private final QuizService quizService;
     public QuizController(QuizService quizService){
         this.quizService = quizService;
     }
 
-    @GetMapping
-    public ResponseEntity<Quiz> getQuiz(){
-        Quiz quiz = quizService.getQuiz();
+    @PostMapping("/quizzes")
+    public ResponseEntity<Quiz> createQuiz(@RequestBody QuizRequest quizRequest){
+        Quiz createdQuiz = quizService.createQuiz(quizRequest);
 
-        return ResponseEntity.ok(quiz);
+        return ResponseEntity.ok(createdQuiz);
     }
 
-    @PostMapping
-    public ResponseEntity<QuizAnswerResponse> checkQuiz(@RequestParam(name = "answer") int answerIndex){
-        QuizAnswerResponse quizAnswerResponse = quizService.checkAnswer(answerIndex);
-
-        return ResponseEntity.ok(quizAnswerResponse);
-    }
 }

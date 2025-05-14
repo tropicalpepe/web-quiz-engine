@@ -1,13 +1,10 @@
-package engine.model;
+package engine.model.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Quiz {
-    private int id;
+public class QuizRequest {
     private String title;
     private String text;
     private String[] options;
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private int answer;
 
     public String getTitle() {
@@ -40,13 +37,5 @@ public class Quiz {
 
     public void setAnswer(int answer) {
         this.answer = answer;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
