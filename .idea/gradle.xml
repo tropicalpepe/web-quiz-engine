@@ -10,6 +10,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Select loops" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/The sum of array elements" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Theory" />
+            <option value="$PROJECT_DIR$/Topics/Iterating over arrays/Two numbers never occur next to each other" />
             <option value="$PROJECT_DIR$/Topics/Polymorphism/Publication and its subclasses" />
             <option value="$PROJECT_DIR$/Topics/Polymorphism/Superclass method call" />
             <option value="$PROJECT_DIR$/Topics/Polymorphism/The time of overloading" />

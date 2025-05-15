@@ -3,6 +3,7 @@ package engine.repository;
 import engine.model.Quiz;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -19,5 +20,19 @@ public class MockQuizRepository implements QuizRepository{
         inMemoryDatabase.put(recordId, quiz);
 
         return quiz;
+    }
+
+    @Override
+    public Quiz findById(long id) {
+        if (!inMemoryDatabase.containsKey(id)) {
+            throw new QuizNotFoundException();
+        }
+
+        return inMemoryDatabase.get(id);
+    }
+
+    @Override
+    public List<Quiz> findAll() {
+        return inMemoryDatabase.values().stream().toList();
     }
 }

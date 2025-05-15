@@ -2,8 +2,11 @@ package engine.service;
 
 import engine.model.Quiz;
 import engine.model.request.QuizRequest;
+import engine.model.response.QuizSolutionResponse;
 import engine.repository.QuizRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class QuizService {
@@ -19,5 +22,28 @@ public class QuizService {
         quiz.setOptions(quizRequest.getOptions());
         quiz.setAnswer(quizRequest.getAnswer());
         return quizRepository.save(quiz);
+    }
+
+    public Quiz getQuiz(int id) {
+        return quizRepository.findById(id);
+    }
+
+    public List<Quiz> getAllQuizzes() {
+        return quizRepository.findAll();
+    }
+
+    public QuizSolutionResponse checkSolution(int id, int solutionIndex){
+        Quiz quizToCheck = getQuiz(id);
+
+        QuizSolutionResponse solutionResponse = new QuizSolutionResponse();
+        if (quizToCheck.getAnswer() == solutionIndex) {
+            solutionResponse.setSuccess(true);
+            solutionResponse.setFeedback("Congratulations, you're right!");
+            return solutionResponse;
+        }
+
+        solutionResponse.setSuccess(false);
+        solutionResponse.setFeedback("Wrong answer! Please, try again.");
+        return solutionResponse;
     }
 }
