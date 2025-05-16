@@ -1,15 +1,26 @@
 package engine.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import java.util.List;
+
+@Entity
 public class Quiz {
+    @Id
     private int id;
     private String title;
     private String text;
-    private String[] options;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<String> options;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private int[] answer;
+    private List<Integer> answer;
 
     public String getTitle() {
         return title;
@@ -27,19 +38,19 @@ public class Quiz {
         this.text = text;
     }
 
-    public String[] getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
-    public void setOptions(String[] options) {
+    public void setOptions(List<String> options) {
         this.options = options;
     }
 
-    public int[] getAnswer() {
+    public List<Integer>  getAnswer() {
         return answer;
     }
 
-    public void setAnswer(int[] answer) {
+    public void setAnswer(List<Integer> answer) {
         this.answer = answer;
     }
 

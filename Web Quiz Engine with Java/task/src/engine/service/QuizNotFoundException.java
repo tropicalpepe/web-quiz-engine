@@ -1,4 +1,4 @@
-package engine.repository;
+package engine.service;
 
 public class QuizNotFoundException extends RuntimeException {
     public QuizNotFoundException() {

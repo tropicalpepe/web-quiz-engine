@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuizService {
@@ -28,7 +29,12 @@ public class QuizService {
     }
 
     public Quiz getQuiz(int id) {
-        return quizRepository.findById(id);
+        Optional<Quiz> quizOptional = quizRepository.findById(id);
+
+        if (quizOptional.isEmpty())
+            throw new QuizNotFoundException();
+
+        return quizOptional.get();
     }
 
     public List<Quiz> getAllQuizzes() {
@@ -36,13 +42,20 @@ public class QuizService {
     }
 
     public QuizSolutionResponse checkSolution(int id, SolutionRequest solutionRequest){
-        Quiz quizToCheck = getQuiz(id);
+        Quiz correctQuiz = getQuiz(id);
 
-        int[] solution = Arrays.stream(solutionRequest.getAnswer()).sorted().toArray();
-        int[] correct = Arrays.stream(quizToCheck.getAnswer()).sorted().toArray();
+        List<Integer> solution = solutionRequest.getAnswer()
+                .stream()
+                .sorted()
+                .toList();
+
+        List<Integer> correct = correctQuiz.getAnswer()
+                .stream()
+                .sorted()
+                .toList();
 
         QuizSolutionResponse solutionResponse = new QuizSolutionResponse();
-        if (Arrays.equals(solution, correct)) {
+        if (solution.equals(correct)) {
             solutionResponse.setSuccess(true);
             solutionResponse.setFeedback("Congratulations, you're right!");
             return solutionResponse;

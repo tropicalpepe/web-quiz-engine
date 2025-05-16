@@ -4,6 +4,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuizRequest {
     @NotBlank
     private String title;
@@ -13,9 +16,9 @@ public class QuizRequest {
 
     @NotNull
     @Size(min = 2)
-    private String[] options;
+    private List<String> options;
 
-    private int[] answer = new int[0];
+    private List<Integer> answer = new ArrayList<>();
 
     public String getTitle() {
         return title;
@@ -33,19 +36,19 @@ public class QuizRequest {
         this.text = text;
     }
 
-    public String[] getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
-    public void setOptions(String[] options) {
+    public void setOptions(List<String> options) {
         this.options = options;
     }
 
-    public int[] getAnswer() {
+    public List<Integer> getAnswer() {
         return answer;
     }
 
-    public void setAnswer(int[] answer) {
+    public void setAnswer(List<Integer> answer) {
         this.answer = answer;
     }
 }
