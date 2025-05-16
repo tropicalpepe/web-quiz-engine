@@ -2,9 +2,13 @@ package engine.controller;
 
 import engine.model.Quiz;
 import engine.model.request.QuizRequest;
+import engine.model.request.SolutionRequest;
 import engine.model.response.QuizSolutionResponse;
+import engine.repository.QuizNotFoundException;
 import engine.service.QuizService;
+import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +23,7 @@ public class QuizController {
     }
 
     @PostMapping("/quizzes")
-    public ResponseEntity<Quiz> createQuiz(@RequestBody QuizRequest quizRequest){
+    public ResponseEntity<Quiz> createQuiz(@Valid @RequestBody QuizRequest quizRequest){
         Quiz createdQuiz = quizService.createQuiz(quizRequest);
 
         return ResponseEntity.ok(createdQuiz);
@@ -42,10 +46,15 @@ public class QuizController {
     @PostMapping("/quizzes/{id}/solve")
     public ResponseEntity<QuizSolutionResponse> checkSolution(
             @PathVariable(name = "id") int id,
-            @RequestParam(name = "answer") int answer) {
-        QuizSolutionResponse solutionResponse = quizService.checkSolution(id, answer);
+            @RequestBody SolutionRequest solutionRequest) {
+        QuizSolutionResponse solutionResponse = quizService.checkSolution(id, solutionRequest);
 
         return ResponseEntity.ok(solutionResponse);
+    }
+
+    @ExceptionHandler(QuizNotFoundException.class)
+    public ResponseEntity<Void> handleQuizNotFoundException(){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }

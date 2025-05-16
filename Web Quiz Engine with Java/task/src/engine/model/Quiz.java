@@ -7,8 +7,9 @@ public class Quiz {
     private String title;
     private String text;
     private String[] options;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private int answer;
+    private int[] answer;
 
     public String getTitle() {
         return title;
@@ -34,11 +35,11 @@ public class Quiz {
         this.options = options;
     }
 
-    public int getAnswer() {
+    public int[] getAnswer() {
         return answer;
     }
 
-    public void setAnswer(int answer) {
+    public void setAnswer(int[] answer) {
         this.answer = answer;
     }
 

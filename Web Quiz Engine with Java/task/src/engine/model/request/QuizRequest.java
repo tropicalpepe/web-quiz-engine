@@ -1,11 +1,21 @@
 package engine.model.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class QuizRequest {
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String text;
+
+    @NotNull
+    @Size(min = 2)
     private String[] options;
-    private int answer;
+
+    private int[] answer = new int[0];
 
     public String getTitle() {
         return title;
@@ -31,11 +41,11 @@ public class QuizRequest {
         this.options = options;
     }
 
-    public int getAnswer() {
+    public int[] getAnswer() {
         return answer;
     }
 
-    public void setAnswer(int answer) {
+    public void setAnswer(int[] answer) {
         this.answer = answer;
     }
 }
