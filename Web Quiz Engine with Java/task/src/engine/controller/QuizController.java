@@ -9,6 +9,8 @@ import engine.service.QuizService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +24,10 @@ public class QuizController {
     }
 
     @PostMapping("/quizzes")
-    public ResponseEntity<Quiz> createQuiz(@Valid @RequestBody QuizRequest quizRequest){
-        Quiz createdQuiz = quizService.createQuiz(quizRequest);
+    public ResponseEntity<Quiz> createQuiz(
+            @Valid @RequestBody QuizRequest quizRequest,
+            @AuthenticationPrincipal UserDetails userDetails){
+        Quiz createdQuiz = quizService.createQuiz(quizRequest, userDetails);
 
         return ResponseEntity.ok(createdQuiz);
     }
@@ -51,9 +55,15 @@ public class QuizController {
         return ResponseEntity.ok(solutionResponse);
     }
 
-    @ExceptionHandler(QuizNotFoundException.class)
-    public ResponseEntity<Void> handleQuizNotFoundException(){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    @DeleteMapping("/quizzes/{id}")
+    public ResponseEntity<Void> deleteQuiz(
+            @PathVariable(name = "id") int id,
+            @AuthenticationPrincipal UserDetails userDetails
+    ) {
+        quizService.deleteQuiz(id, userDetails);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
 
 }

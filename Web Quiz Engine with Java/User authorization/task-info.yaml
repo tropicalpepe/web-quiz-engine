@@ -15,22 +15,16 @@ files:
   - name: src/engine/model/request/QuizRequest.java
     visible: true
     learner_created: true
-  - name: src/engine/repository/JpaQuizRepository.java
+  - name: src/engine/repository/QuizRepository.java
     visible: true
     learner_created: true
   - name: src/engine/exception/GlobalExceptionHandler.java
-    visible: true
-    learner_created: true
-  - name: src/engine/repository/MockQuizRepository.java
     visible: true
     learner_created: true
   - name: src/engine/model/request/SolutionRequest.java
     visible: true
     learner_created: true
   - name: src/engine/service/QuizNotFoundException.java
-    visible: true
-    learner_created: true
-  - name: src/engine/repository/QuizRepository.java
     visible: true
     learner_created: true
   - name: src/engine/model/response/QuizSolutionResponse.java
@@ -60,6 +54,15 @@ files:
   - name: src/engine/service/UserService.java
     visible: true
     learner_created: true
+  - name: src/engine/service/UserNotFoundException.java
+    visible: true
+    learner_created: true
+  - name: src/engine/exception/AccessDeniedException.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/8256#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: Failed to launch checking
+  time: "Fri, 16 May 2025 21:38:36 UTC"
 record: -1

@@ -20,6 +20,10 @@ public class Quiz {
     private String title;
     private String text;
 
+    @ManyToOne
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User createdBy;
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<String> options;

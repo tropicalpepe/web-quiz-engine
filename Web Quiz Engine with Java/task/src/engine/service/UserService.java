@@ -4,6 +4,7 @@ import engine.model.User;
 import engine.model.request.UserRequest;
 import engine.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,15 @@ public class UserService {
             throw new IllegalArgumentException("User with the same email already exists");
 
         User user = userRequest.toUser(passwordEncoder);
-        System.out.println(user);
         userRepository.save(user);
     }
+
+    public User getUser(UserDetails userDetails) {
+        String email = userDetails.getUsername();
+
+        return userRepository
+                .findUserByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
 }

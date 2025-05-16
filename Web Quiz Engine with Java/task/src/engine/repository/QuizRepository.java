@@ -1,12 +1,11 @@
 package engine.repository;
 
 import engine.model.Quiz;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface QuizRepository {
-    public Quiz save(Quiz quiz);
-    public Optional<Quiz> findById(long id);
-    public List<Quiz> findAll();
-}
+@Primary
+public interface QuizRepository extends JpaRepository<Quiz, Long> {}

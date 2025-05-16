@@ -22,8 +22,8 @@ public class UserRequest {
     public User toUser(PasswordEncoder passwordEncoder) {
         User user = new User();
 
-        user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
+        user.setEmail(getEmail());
+        user.setPassword(passwordEncoder.encode(getPassword()));
 
         return user;
     }
