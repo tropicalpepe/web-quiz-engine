@@ -20,6 +20,7 @@ public class QuizService {
 
     public Quiz createQuiz(QuizRequest quizRequest){
         Quiz quiz = new Quiz();
+
         quiz.setTitle(quizRequest.getTitle());
         quiz.setText(quizRequest.getText());
         quiz.setOptions(quizRequest.getOptions());

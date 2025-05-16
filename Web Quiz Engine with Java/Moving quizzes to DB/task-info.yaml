@@ -46,15 +46,8 @@ files:
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/8255#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #6
-
-    POST /api/quizzes should respond with status code 200, responded: 500
-
-    Response body:
-
-    {&quot;timestamp&quot;:&quot;2025-05-16T10:26:02.073+00:00&quot;,&quot;status&quot;:500,&quot;error&quot;:&quot;Internal Server Error&quot;,&quot;path&quot;:&quot;/api/quizzes&quot;}
-  time: "Fri, 16 May 2025 10:26:02 UTC"
-record: -1
+  message: Congratulations!
+  time: "Fri, 16 May 2025 10:43:50 UTC"
+record: 4
