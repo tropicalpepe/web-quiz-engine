@@ -61,8 +61,8 @@ files:
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/8256#comment
-status: Failed
+status: Solved
 feedback:
-  message: Failed to launch checking
-  time: "Fri, 16 May 2025 21:38:36 UTC"
-record: -1
+  message: Congratulations!
+  time: "Sat, 17 May 2025 19:42:03 UTC"
+record: 5

@@ -30,4 +30,11 @@ public class UserService {
                 .orElseThrow(UserNotFoundException::new);
     }
 
+    public void isUserAuthorized(UserDetails userDetails){
+        User user = getUser(userDetails);
+
+
+
+    }
+
 }

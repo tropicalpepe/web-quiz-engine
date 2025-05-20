@@ -18,10 +18,11 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../../Web Quiz Engine with Java/task/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../../Web Quiz Engine with Java/task/src/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../../Web Quiz Engine with Java/task/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../../Web Quiz Engine with Java/task/src/generated" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.projectlombok:lombok:1.18.38" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: org.projectlombok:lombok:1.18.30" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-actuator:3.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:3.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-validation:3.2.0" level="project" />

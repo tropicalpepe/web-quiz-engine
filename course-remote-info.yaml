@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://hyperskill.org/api/projects/91/additional-files/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Fri, 16 May 2025 18:02:36 UTC"
+update_date: "Tue, 20 May 2025 08:18:14 UTC"
 stages:
   - id: 504
     step: 8252
@@ -19,10 +19,10 @@ stages:
     is_completed: true
   - id: 508
     step: 8256
-    is_completed: false
+    is_completed: true
   - id: 509
     step: 8257
-    is_completed: false
+    is_completed: true
 topics:
   0:
     - title: Modulo division
@@ -189,12 +189,12 @@ topics:
       theory_id: 9831
     - title: JSON
       theory_id: 6854
+    - title: Introduction to API
+      theory_id: 17007
     - title: Hash function
       theory_id: 30143
     - title: Hash table
       theory_id: 13054
-    - title: Introduction to API
-      theory_id: 17007
     - title: IntelliJ IDEA
       theory_id: 37202
     - title: Run and debug with IntelliJ IDEA
